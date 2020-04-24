@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {font-family: Arial;}
+
+/* Style the tab */
+.tab {
+  overflow: hidden;
+  border: 1px solid #ccc;
+   background-color: #d1eff7;
+  
+}
+
+
+/* Style the buttons inside the tab */
+.tab button {
+  background-color: #d1eff7;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-size: 17px;
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+  background-color: #87ceeb;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+  background-color: #2440d5;
+}
+
+/* Style the tab content */
+.tabcontent {
+  display: none;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-top: none;
+}
+.formcontent {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  //border-top: none;
+}
+form{
+   padding-left: 10px;
+
+}
+input,select {
+  padding: 10px 10px;
+  margin: 4px 20px;
+  margin-bottom:10px;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+   background-color: #ddd;
+  box-sizing: border-box;
+  
+}
+input[type=submit]{
+      padding:10px;
+	  float: right;
+ }
+ 
+
+ td{
+ border-radius:2px;
+ length:170px;
+  background-color: #ddd;
+  padding:6px;
+
+}
+th,tr{
+padding:8px 8x;
+
+
+}
+ input.radio {
+     background-color: #d1d3d1;
+        content: '';
+        display: inline-block;
+        visibility: visible;
+        border: 2px solid white;
+    }
+	#bg {
+  /* The image used */
+  background-image: url("../mtjy.jpg");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+body, html {
+  height: 100%;
+  margin: 0;
+}
+input[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+input[type=radio] + img {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+input[type=radio]:checked + img {
+  outline: 2px solid #f00;
+}
+</style>
+  <!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/css/mdb.min.css" rel="stylesheet">
+<!-- JQuery -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.16.0/js/mdb.min.js"></script>
+<script src='main.js' type="text/javascript"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+<div class='tab' >
+<h1 style="color:Blue" align='center'><B>Job Saathi</b></h1>
+   <marquee behavior="scroll" direction="left" style="color:#107922"><b>A Mind Always Employed is Always Happy!</b></marquee>
+</div>
+<div class='tabper' id='personaldiv'></div>
+<div class="tab" style="width:100%">
+  <button class="tablinks" onclick="openCity(event, 'Candidate Search')">Candidate Search</button>
+  <button class="tablinks" onclick="openCity(event, 'Opportunity Search')">Opportunity Search</button>
+  <button class="tablinks" onclick="openCity(event, 'Candidate Onboarding')">Candidate Onboarding </button>
+  <button class="tablinks" onclick="openCity(event, 'Company Demand Registration')">Company Demand Registration</button>
+</div>
+<div  id="bg" ></div>
+<div id="Candidate Search" class="tabcontent">
+
+	<h2>Candidate Search</h2>
+	<div style="width:70%">
+	<form id='searchform' >
+		<select  id='sindustry'  style='width:200px'>
+	       <option value="" disabled selected>Industry</option> 
+ 	   </select>
+	   <select  id='cpSkill'  style='width:200px'>
+	       <option value="" disabled selected>--- Primary Skill ---</option> 
+ 	   </select>
+	   <br></br>
+	   <select  id='csSkill'  style='width:200px'>
+	       <option value="" disabled selected>--- Secondary Skill ---</option> 
+ 	   </select>
+	  
+	   <select  id='candistrict'  style='width:200px'>
+	       <option value="" disabled selected>District</option>
+ 	   </select>
+	   	   <input type='submit' style='width:150px;background-color:green' value='submit'>
+	   </form>
+	</div>
+	
+	<div>
+	</br>
+	<br>
+	<h2 id='sear' align="center">Search Results will be displayed here</h2>
+	<h4 id='res'> Search Result :</h4>
+	<table id='candsearch' style="width:100%;border:1px solid black;border-spacing:10px 10px">
+	
+  <tr>
+  <thead>
+    <th>Name</th>
+	<th>Age group</th>
+	<th>Contact No.</th>
+	<th>Email</th>
+	<th>Primary Skill</th>
+	<th>Secondary Skill</th>
+	<th>Location</th>
+  </tr>
+   </thead>
+<tbody>
+</tbody>
+</table>
+	</div>
+</div>
+
+<div id="Opportunity Search" class="tabcontent">
+  <h2> Opportunity Search</h2>
+	<div style="width:50%">
+	<form id='oppform'>
+		<select  id='oindustry'  style='width:200px'>
+	       <option value="" disabled selected>Industry</option> 
+ 	   </select>
+	   <select  id='oSkill'  style='width:200px'>
+	       <option value="" disabled selected>--- Primary Skill ---</option> 
+ 	   </select>
+	   </br><br>
+	   <select  id='osSkill'  style='width:200px'>
+	       <option value="" disabled selected>--- Secondary Skill ---</option> 
+ 	   </select>
+	  
+	   <select  id='odistrict'  style='width:200px'>
+	       <option value="" disabled selected>District</option>
+ 	   </select>
+	   
+	   
+	   <input type='submit' style='width:200px;background-color:green' value='submit'>
+	   </form>
+	</div>
+	</br>
+	<h2 id='osear' align="center">Search Results will be displayed here</h2>
+	<h4 id='ores'> Search Result :</h4>
+	<div>
+	<table id='oppsearch' style="width:100%;border:1px solid black;border-spacing:10px 10px">
+	<thead>
+  <tr>
+    <th>Company Name</th>
+	<th>Job Description</th>
+	<th>Job Location</th>
+	<th>Contact No.</th>
+	<th>Email</th>
+	<th>Available From</th>
+  </tr>
+ </thead>
+<tbody>
+</tbody>
+</table>
+	</div>
+</div>
+
+<div id="Candidate Onboarding" class="tabcontent">
+<div style='margin:150px 200px 100px 500px'   id='wayselect' >
+<div class="custom-control custom-radio">
+<h3>
+  <input type="radio" class="custom-control-input" id="regform" name="groupOfMaterialRadios" value='Registration Form'><img src="../forms.jpg" alt="Smiley face" width="42" height="42">
+  <label class="custom-control-label" for="regform" style="color:blue"> Registration Form</label>
+  <h3>
+</div>
+
+<!-- Group of default radios - option 2 -->
+<div class="custom-control custom-radio">
+ <h3> <input type="radio" class="custom-control-input" id="defaultGroupExample2" name="groupOfMaterialRadios"  value='IVR Toll Free'><img src="../tolls.jpg" alt="Smiley face" width="42" height="42">
+  <label class="custom-control-label" for="defaultGroupExample2" style="color:blue"> IVR Toll Free</label></h3>
+</div>
+
+<!-- Group of default radios - option 3 -->
+<div class="custom-control custom-radio">
+  <h3><input type="radio" class="custom-control-input" id="defaultGroupExample3" name="groupOfMaterialRadios"  value='Whatsapp Video/Message' ><img src="../whatsp.png" alt="Smiley face" width="42" height="42">
+  <label class="custom-control-label" for="defaultGroupExample3" style="color:blue">Whatsapp Video/Message</label></h3>
+</div>
+</div>
+<div id="canonbo">
+  <form id='myForm' method='post' >
+ <div class="formcontent">
+
+  <h4 align='top'>primary information</h4>
+
+    
+	 
+	  <input type='text' id='FName' placeholder='First Name'>
+	   <input type='text' id='MName' placeholder='Middle Name'>
+	     <input type='text' id='LName' placeholder='Last Name'>
+		<br></br>
+		 <input type='date' style='width:200px' id='Dob' placeholder='Date of Birth' >
+<input type='text' id='contactno' placeholder='contact number'>
+<input type='text' id='emailid' placeholder='email id'>
+
+  </div>
+<div class="formcontent">
+  <h4 align='top'>Address </h4>
+     
+	 	  <input type='text' id='address' placeholder='address details'>
+	    <select  id='ccity' placeholder='city/town/village' style='width:200px'>
+	        <option value="" disabled selected>city/town/village</option>	      
+	      
+ 	   </select>
+	   <select  id='cdistrict' placeholder='district' style='width:200px'>
+	         <option value="" disabled selected>district</option>	      
+		  
+ 	   </select>
+	   <br></br>
+	    <select  id='cstate' placeholder='state' style='width:200px'>
+          <option value="" disabled selected>state</option>	  
+	       
+ 	   </select>
+	     <input type='text' id='pincode' placeholder='pincode'>	 
+		   </div>
+		   
+<div class="formcontent">
+  <h4 align='top'>Preferred Job Location </h4>
+     
+	   <select  id='jdistrict' placeholder='district' style='width:200px'>
+	         <option value="" disabled selected>district</option>	      
+		    <option value="chennai">chennai</option>
+            <option value="bangalore">bangalore</option>
+ 	   </select>
+	  
+	    
+	
+		   </div>
+
+<div class="formcontent">
+  <h4 align='top'>Skill Information </h4>
+    	  
+	   <select  id='industry' placeholder='Industry' style='width:200px'>
+	        <option value="" disabled selected>Industry</option>	
+ 	   </select>
+	   <select  id='primaryskill' placeholder='---primary skill---' style='width:200px'>
+         <option value="" disabled selected>---primary skill---</option>	     
+		
+ 	   </select>
+	  <br></br>
+	    <select  id='secondaryskill' placeholder='---secondary skill---' style='width:200px'>
+		<option value="" disabled selected>---secondary skill---</option>
+	       
+ 	   </select>
+	    	 
+		 <input type='submit' align='right' style='width:200px;background-color:green' value='submit'>
+		
+		   </div>
+		    </form>
+			</div>
+</div>
+
+<div id="Company Demand Registration" class="tabcontent">
+     <form id='companyForm' method='post' >
+ <div class="formcontent">
+
+  <h4 align='top'>primary information</h4>
+
+    
+	 
+	  <input type='text' id='comname' placeholder='company Name'>
+	   <input type='text' id='regno' placeholder='company Registration Number'>
+	   <br></br>
+	     <input type='text' id='pcon' placeholder='primary contact'>
+		<input type='text' id='primemail' placeholder='Primary email id'>
+
+  </div>
+<div class="formcontent">
+  <h4 align='top'>Address </h4>
+     
+	 	  <input type='text' id='comaddress' placeholder='address details'>
+	    <select  id='comcity' placeholder='city/town/village' style='width:200px'>
+	        <option value="" disabled selected>city/town/village</option>	      
+	      
+ 	   </select>
+	   <select  id='comdistrict' placeholder='district' style='width:200px'>
+	         <option value="" disabled selected>district</option>	      
+		  
+ 	   </select>
+	 <br></br>
+	    <select  id='comstate' placeholder='state' style='width:200px'>
+          <option value="" disabled selected>state</option>	  
+	       
+ 	   </select>
+	     <input type='text' id='compincode' placeholder='pincode'>	 
+		   </div>
+	
+
+<div class="formcontent">
+  <h4 align='top'>Oppurtunity Details </h4>
+    	   <input type='text' id='jobdes' placeholder='Job Description'>
+		   <input type='text' id='vac' placeholder='Total vacancy'>
+		   <input type='date' id='avai'  style='width:200px' placeholder='Available from'>
+	   <select  id='comindustry' placeholder='Industry' style='width:200px'>
+	        <option value="" disabled selected>Industry</option>	
+ 	   </select>
+	   <select  id='comprimaryskill' placeholder='---primary skill---' style='width:200px'>
+         <option value="" disabled selected>---primary skill---</option>	     
+		
+ 	   </select>
+	  <br></br>
+	    <select  id='comsecondaryskill' placeholder='---secondary skill---' style='width:200px'>
+		<option value="" disabled selected>---secondary skill---</option>
+	       
+ 	   </select>
+	   <input type='text' id='jobaddress' placeholder='Job Location (Complete address)'>
+	    	 
+		 <input type='submit' align='right' style='width:200px;background-color:green' value='submit'>
+		
+		   </div>
+		    </form>
+  </div>
+
+<script>
+function openCity(evt, cityName) {
+$('#bg').hide()
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablinks");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].className = tablinks[i].className.replace(" active", "");
+  }
+  document.getElementById(cityName).style.display = "block";
+  
+  evt.currentTarget.className += " active";
+   $('#wayselect').show();
+  $('#canonbo').hide();
+  console.log(cityName);
+  if(cityName=='Candidate Onboarding' )
+  { $('#personaldiv').empty()
+     $('#personaldiv').append("<h3 style='color:red' style='width:50%'><b>Job Seeker persona:</b><img src='../skill.png' width='72' height='52' style='float:right'></img></h3>")
+	 }
+  else if( cityName=='Company Demand Registration'){ $('#personaldiv').empty();
+  $('#personaldiv').append("<h3 style='color:red' style='width:50%'><b>Resource Seeker Persona:</b><img src='../post.png' width='72' height='52' style='float:right'></img></h3>")
+  } 
+  else if(cityName=='Candidate Search'){ $('#personaldiv').empty();
+  $('#personaldiv').append("<h3 style='color:red' style='width:50%'><b>Job Seeker persona:</b><img src='../search.png' width='72' height='52' style='float:right'></img></h3>")
+  }
+  else if(cityName=='Opportunity Search'){ $('#personaldiv').empty();
+  $('#personaldiv').append("<h3 style='color:red' style='width:50%'><b>Resource Seeker Persona:</b><img src='../job.jpg' width='72' height='52' style='float:right'></img></h3>")}
+  if(cityName=='Candidate Onboarding' || cityName=='Company Demand Registration'){
+  document.getElementById('regform').checked = false;
+  
+  fetchcanOnboard(cityName)
+    }
+	else if(cityName=='Candidate Search' || cityName=='Opportunity Search'){
+	
+	$("#candsearch").hide();
+	$("#oppsearch").hide();
+	$('#res').hide()
+	$('#ores').hide()
+		console.log("calling search")
+	fetchSearch(cityName)
+	}
+}
+ $(function () {
+    $('#wayselect input[type=radio]').change(function(){
+      //alert ( $(this).val() ) 
+	  if($(this).val() =='Registration Form' ){
+	      $('#wayselect').hide();
+		  $('#canonbo').show();
+		  
+      }
+      })
+})
+
+$(document).ready(function(){
+        $("#companyForm").submit(function(event){
+            event.preventDefault();
+            var comname = $('#comname').val();
+            var regno = $('#regno').val();
+			var pcon=$('#pcon').val();
+			var primemail=$('#primemail').val()
+			
+			  var ccity=  $("#comcity option:selected").val();
+			  var address=$('#comaddress').val()
+			var cdistrict= $("#comdistrict option:selected").val()
+			 var cstate= $("#comstate option:selected"). val()  ;
+             var pincode=$('#compincode').val()			 
+			 
+			 var jobdes = $('#jobdes').val();
+            var tottalvac = $('#vac').val();
+			var available=$('#avai').val();
+			 var industry= $("#comindustry option:selected").val();	
+			var primaryskill= $("#comprimaryskill option:selected").val();	
+			 var secondaryskill= $("#comsecondaryskill option:selected").val();	
+			var jobaddress=$('#jobaddres').val();
+			            $.ajax({
+                method: 'post',
+                url: 'http://localhost:8082/jobformsubmit',
+                data: JSON.stringify({ comname: comname, regno: regno,pcon:pcon,primemail:primemail,ccity:ccity,cdistrict:cdistrict,cstate:cstate,industry:industry,primaryskill:primaryskill,secondaryskill:secondaryskill,address:address,pincode:pincode,jobdes:jobdes,tottalvac:tottalvac,available:available,jobaddress:jobaddress}),
+                contentType: 'application/json',
+                success: function(data) {
+				window.location.reload(); 
+                   alert("successfully inserted")
+				  
+                }
+
+            })
+        });
+    });
+	
+$(document).ready(function(){
+        $("#myForm").submit(function(event){
+            event.preventDefault();
+            var FName = $('#FName').val();
+            var MName = $('#MName').val();
+			var Lname=$('#LName').val();
+			var dob=$('#Dob').val()
+			var contact=$('#contactno').val()
+			var email=$('#emailid').val();
+			  var ccity=  $("#ccity option:selected").val();
+			  var addr=$('#address').val()
+			 var jdistrict= $('#jdistrict option:selected').val()
+			var cdistrict= $("#cdistrict option:selected").val()
+			 var cstate= $("#cstate option:selected"). val()  ;	
+			  var industry= $("#industry option:selected").val();	
+			var primaryskill= $("#primaryskill option:selected").val();	
+			 var secondaryskill= $("#secondaryskill option:selected").val();	
+			 var pincode=$('#pincode').val()
+			console.log(MName)
+			console.log(dob)
+            $.ajax({
+                method: 'post',
+                url: 'http://localhost:8082/formsubmit',
+                data: JSON.stringify({ FName: FName, MName: MName,Lname:Lname,dob:dob,contact:contact,email:email ,ccity:ccity,jdistrict:jdistrict,cdistrict:cdistrict,cstate:cstate,industry:industry,primaryskill:primaryskill,secondaryskill:secondaryskill,address:address,pincode:pincode}),
+                contentType: 'application/json',
+                success: function(data) {
+				window.location.reload(); 
+                   alert("successfully inserted")
+				  
+                }
+
+            })
+        });
+    });
+	
+$(document).ready(function(){
+        $("#searchform").submit(function(event){
+         event.preventDefault();
+            var cpSkill = $('#cpSkill').val();
+            var district = $('#candistrict').val();
+			var industry=$('#sindustry').val();
+			var csSkill=$('#csSkill').val()
+	 $.ajax({
+                method: 'post',
+                url: 'http://localhost:8082/formtable',
+                data: JSON.stringify({cpSkill:cpSkill,district:district,industry:industry,csSkill:csSkill}),
+                contentType: 'application/json',
+                success: function(data,fields) {
+				
+				 console.log(data);
+				   var serverData = JSON.parse(data);
+				   console.log(serverData);
+				var event_data = '';
+               $.each(serverData, function(index, value){
+			   event_data += '<tr>';
+                event_data += '<td>'+value.CAND_FIRST_NAM+'</td>';
+                event_data += '<td size=100px>'+value.CAND_BIRTH_DT+'</td>';
+				  event_data += '<td>'+value.CAND_PRM_MOB_NUM+'</td>';
+				  event_data += '<td>'+value.CAND_PRM_EMAIL_ID+'</td>';
+				  event_data += '<td>'+cpSkill+'</td>'; 
+				    event_data += '<td>'+csSkill+'</td>'; 
+                   event_data += '<td>'+district+'</td>'; 
+                event_data += '</tr>';
+            });
+            $("#candsearch").append(event_data);
+           $('#sear').hide()	
+          		   
+            $("#candsearch").show()	;
+			$('#res').show();
+			
+				             }		
+							 
+							 });
+							 });
+    });
+	
+$(document).ready(function(){
+        $("#oppform").submit(function(event){
+         event.preventDefault();
+            var cpSkill = $('#oSkill').val();
+            var district = $('#odistrict').val();
+			var industry=$('#oindustry').val();
+			var csSkill=$('#osSkill').val()
+	 $.ajax({
+                method: 'post',
+                url: 'http://localhost:8082/opptable',
+                data: JSON.stringify({cpSkill:cpSkill,district:district,industry:industry,csSkill:csSkill}),
+                contentType: 'application/json',
+                success: function(data,fields) {
+				
+				 console.log(data);
+				   var serverData = JSON.parse(data);
+				   console.log(serverData);
+				var event_data = '';
+               $.each(serverData, function(index, value){
+			   event_data += '<tr>';
+                event_data += '<td>'+value.COMP_NAME+'</td>';
+                event_data += '<td size=100px>'+value.COMP_JOB_DESC+'</td>';
+				  event_data += '<td>'+district+'</td>';
+				  event_data += '<td>'+value.COMP_JOB_CONT_MOBILE+'</td>';
+				  event_data += '<td>'+value.COM_JOB_CONT_EMAIL+'</td>'; 
+				    event_data += '<td>'+value.COMP_INCORP_DT+'</td>'; 
+                  event_data += '</tr>';
+            });
+            $("#oppsearch").append(event_data);
+           $('#osear').hide()	
+          		   
+            $("#oppsearch").show()	;
+			$('#ores').show();
+			
+				             }		
+							 
+							 });
+							 });
+    });
+	
+	
+function fetchcanOnboard(type) {
+console.log('fetching')
+    $.ajax({
+    type: 'POST',
+    url: "http://localhost:8082/canon",
+    data: 'China',
+    datatype: 'json',
+    success: function (q1) {
+       var data=q1;
+       console.log(data);
+				   var serverData = JSON.parse(data);
+				   				   console.log(serverData);
+				   				var city,dist,state = '';
+				               $.each(serverData, function(index, value){
+			                   city += '<option>'+value.LOC_TALUK_NAM+'</option>';
+                dist += '<option>'+value.LOC_DIST_NAM+'</option>';
+				state += '<option>'+value.LOC_STAT_NAM+'</option>';    
+            });
+			if(type=='Candidate Onboarding'){
+            $("#ccity").append(city);	
+			 $("#cdistrict").append(dist);	
+			  $("#cstate").append(state);	
+			  $('#jdistrict').append(dist);
+			}
+			else{
+			 $("#comcity").append(city);	
+			 $("#comdistrict").append(dist);	
+			  $("#comstate").append(state);	
+			}
+			  
+    },
+    error: function (xhr, status, error) {
+     
+    }
+});
+$.ajax({
+    type: 'POST',
+    url: "http://localhost:8082/canonJob",
+    data: 'China',
+    datatype: 'json',
+    success: function (q1) {
+       var data=q1;
+       console.log(data);
+				   var serverData = JSON.parse(data);
+				   //var jobdata = JSON.parse(data1);
+				   console.log(serverData);
+				   
+				 var indu,prim,sec = '';
+               $.each(serverData, function(index, value){	   
+                   indu += '<option>'+value.COMP_JOB_INDUSTRY+'</option>';
+                prim += '<option>'+value.COMP_JOB_PRIM_SKILL+'</option>';
+				if(value.COMP_JOB_ALT_SKILL !="")
+				sec += '<option>'+value.COMP_JOB_ALT_SKILL+'</option>';              
+            });
+			if(type=='Candidate Onboarding'){
+                  $("#industry").append(indu);	
+			 $("#primaryskill").append(prim);	
+			  $("#secondaryskill").append(sec);	
+			  }
+			  else{
+			   $("#comindustry").append(indu);	
+			 $("#comprimaryskill").append(prim);	
+			  $("#comsecondaryskill").append(sec);	
+			  }
+    },
+    error: function (xhr, status, error) {
+        
+    }
+});
+}
+
+function fetchSearch(type) {
+console.log('fetching search')
+    $.ajax({
+    type: 'POST',
+    url: "http://localhost:8082/cansearch",
+    data: 'China',
+    datatype: 'json',
+    success: function (q1) {
+       var data=q1;
+       console.log(data);
+				   var serverData = JSON.parse(data);
+				   				   console.log(serverData);
+				   				var dist = ""
+								$.each(serverData, function(index, value){
+			                                   dist += '<option>'+value.COMP_CITY_NAM+'</option>';
+				                });
+           // $("#cancity").append(city);	
+		   console.log(type)
+		   if(type=='Candidate Search'){
+		       console.log(dist)
+		        $("#candistrict").append(dist);
+			   }
+			else{
+			  	$("#odistrict").append(dist);
+			 }
+			//  $("#canstate").append(state);	
+    },
+    error: function (xhr, status, error) {
+        
+    }
+});
+$.ajax({
+    type: 'POST',
+    url: "http://localhost:8082/canonsearchjob",
+    data: 'China',
+    datatype: 'json',
+    success: function (q1) {
+       var data=q1;
+       console.log(data);
+				   var serverData = JSON.parse(data);
+				   //var jobdata = JSON.parse(data1);
+				   console.log(serverData);
+				   
+				 var indu,prim,sec = '';
+               $.each(serverData, function(index, value){	   
+                   indu += '<option>'+value.CAND_SKILL_INDUSTRY+'</option>';
+                prim += '<option>'+value.CAND_PRIM_SKILL_DESC+'</option>';
+				if(value.CAND_ALT_SKILL_DESC !="")
+				sec += '<option>'+value.CAND_ALT_SKILL_DESC+'</option>';              
+            });
+                  	
+			  if(type=='Candidate Search'){
+			    $("#sindustry").append(indu);	
+			 $("#cpSkill").append(prim);	
+			  $("#csSkill").append(sec);
+			  }
+			  else{
+			  $("#oindustry").append(indu);	
+			 $("#oSkill").append(prim);	
+			  $("#osSkill").append(sec);
+			  }
+    },
+    error: function (xhr, status, error) {
+        
+    }
+});
+if(type=='Opportunity Search'){
+$.ajax({
+    type: 'POST',
+    url: "http://localhost:8082/canonsearchcom",
+    data: 'China',
+    datatype: 'json',
+    success: function (q1) {
+       var data=q1;
+       console.log(data);
+				   var serverData = JSON.parse(data);
+				   //var jobdata = JSON.parse(data1);
+				   console.log(serverData);
+				   
+				 var indus,prims,secs = '';
+               $.each(serverData, function(index, value){	   
+                   indus += '<option>'+value.COMP_JOB_INDUSTRY+'</option>';
+                prims += '<option>'+value.COMP_JOB_PRIM_SKILL+'</option>';
+				if(value.COMP_JOB_ALT_SKILL !="")
+				secs += '<option>'+value.COMP_JOB_ALT_SKILL+'</option>';              
+            });
+                  	
+			 console.log(secs);
+			  $("#oindustry").append(indus);	
+			 $("#oSkill").append(prims);	
+			  $("#osSkill").append(secs);
+			  
+    },
+    error: function (xhr, status, error) {
+        
+    }
+});
+}
+}
+</script>
+   
+</body>
+</html> 
